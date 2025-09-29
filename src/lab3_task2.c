@@ -1,6 +1,6 @@
 /*
  * Lab 3, Task 2
- * Student Name, Student ID
+ * Aditya Panwar, 241ADB112
  *
  * Practice using pointers as function parameters.
  * Implement:
@@ -36,11 +36,14 @@ int main(void) {
     return 0;
 }
 
-// Implement functions below
+// Swap values using a temporary variable
 void swap(int *x, int *y) {
-    // TODO: swap values using a temporary variable
+    int temp = *x;  // store value of x
+    *x = *y;        // put y’s value into x
+    *y = temp;      // put stored value into y
 }
 
+// Multiply value by 2
 void modify_value(int *x) {
-    // TODO: multiply value by 2
+    *x = *x * 2;
 }
