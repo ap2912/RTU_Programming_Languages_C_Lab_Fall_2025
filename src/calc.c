@@ -1,10 +1,4 @@
-// John Doe 123456
-// Compile with: gcc -O2 -Wall -Wextra -std=c17 -o calc calc.c
-// -----------------------------------------------------------
-// Grade 7 version
-// Supports +, -, *, / operations, integers and floats, multiline input,
-// and division-by-zero detection with correct error positions.
-// -----------------------------------------------------------
+
 
 #include <ctype.h>
 #include <errno.h>
@@ -13,9 +7,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-// -------------------- Tokenizer -------------------- //
-// Simple tokenizer that splits input into tokens: numbers and operators.
-// Keeps track of character positions for error reporting.
 
 typedef enum {
   T_NUMBER,
@@ -30,7 +21,7 @@ typedef enum {
 typedef struct {
   TokenType type;
   double value;
-  size_t pos;  // position in text (1-based)
+  size_t pos;  
 } Token;
 
 static const char* src;
@@ -42,7 +33,7 @@ static size_t error_pos = 0;
 static void set_error(size_t pos) {
   if (!had_error) {
     had_error = 1;
-    error_pos = pos + 1;  // Convert to 1-based index
+    error_pos = pos + 1;  
   }
 }
 
@@ -96,14 +87,6 @@ static void next_token() {
       return;
   }
 }
-
-// -------------------- Parser -------------------- //
-// Grammar:
-// expr  := term { ('+' | '-') term }
-// term  := factor { ('*' | '/') factor }
-// factor:= NUMBER
-//
-// This uses recursive descent parsing, simple and human-readable.
 
 static double parse_expr();
 
@@ -173,9 +156,6 @@ static int evaluate(const char* text, double* result) {
   return !had_error;
 }
 
-// -------------------- File I/O -------------------- //
-// Read input text and write result or error to output file.
-
 static char* read_file(const char* filename) {
   FILE* f = fopen(filename, "r");
   if (!f) return NULL;
@@ -204,9 +184,6 @@ static void write_result(const char* outpath, double value, int ok) {
   }
   fclose(f);
 }
-
-// -------------------- Main -------------------- //
-// Handles reading file, filtering comments, evaluating, writing result.
 
 int main(int argc, char** argv) {
   if (argc < 2) {
