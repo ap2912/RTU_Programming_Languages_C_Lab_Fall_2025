@@ -193,7 +193,8 @@ int main(int argc, char** argv) {
 
   const char* input = argv[1];
   char output[256];
-  snprintf(output, sizeof(output), "result_name_lastname_studentid.txt");
+  snprintf(output, sizeof(output), "result_Aditya_Panwar_241ADB112.txt");
+
 
   char* content = read_file(input);
   if (!content) {
